@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panchimalco 360° - Experiencia de Realidad Aumentada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Lora&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #ffffff;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-image: url('https://www.jansochor.com/photo-blog/virgin-mary-procession-el-salvador.jpg'); /* Fondo cultural más llamativo sin marca de agua */
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            text-align: center;
+            padding: 100px 20px; /* Aumentado el padding para más espacio */
+            position: relative;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Overlay semi-transparente para mejorar visibilidad del texto */
+        }
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 4em; /* Tamaño grande y visible */
+            color: #E1C16E; /* Dorado suave para resaltar */
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Sombra para hacerlo más llamativo */
+            position: relative;
+            z-index: 1;
+            margin: 0;
+        }
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #B1362E; /* Rojo flor - pasión y energía */
+        }
+        nav {
+            background-color: #4F6D48; /* Verde monte - naturaleza viva */
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #ffffff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        nav a:hover {
+            color: #E1C16E; /* Dorado suave - tradición y fe */
+        }
+        section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .grid-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .ruta, .feature {
+            background-color: #f9f9f9;
+            border-left: 5px solid #E1C16E; /* Dorado suave */
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .ruta:hover, .feature:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .ruta p, .feature p {
+            display: none; /* Oculto inicialmente para interactividad */
+        }
+        .ruta.active p, .feature.active p {
+            display: block;
+        }
+        img, iframe {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+            filter: brightness(1.1); /* Retoque cálido y artesanal */
+        }
+        .ar-note {
+            font-style: italic;
+            color: #4F6D48;
+            text-align: center;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        header .ar-note {
+            font-size: 1.5em; /* Tamaño más grande para mayor legibilidad */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para mejorar visibilidad */
+            color: #ffffff; /* Color blanco explícito para la frase */
+        }
+        .share-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .share-buttons a {
+            margin: 0 10px;
+            color: #B1362E;
+            font-size: 1.5em;
+            text-decoration: none;
+        }
+        footer {
+            background-color: #B1362E; /* Rojo flor */
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        /* Iconografía simple con CSS */
+        .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Panchimalco 360°</h1>
+        <p class="ar-note">Escanea con tu app de Realidad Aumentada para una experiencia inmersiva en 360°.</p>
+    </header>
+
+    <nav>
+        <a href="#ruta-color">Ruta del Color</a>
+        <a href="#ruta-fe">Ruta de la Fe</a>
+        <a href="#ruta-gastronomica">Ruta Gastronómica</a>
+        <a href="#ruta-arte">Ruta del Arte Vivo</a>
+        <a href="#mapas-3d">Mapas 3D</a>
+        <a href="#galeria-360">Galería 360°</a>
+        <a href="#integracion">Integración</a>
+    </nav>
+
+    <section id="home">
+        <div class="ruta">
+            <h2>Bienvenido a Panchimalco</h2>
+            <p>Bienvenido a Panchimalco, donde la fe se convierte en arte y las tradiciones florecen entre montañas. Descubre las raíces que inspiran, una experiencia cultural viva que conecta generaciones.</p>
+            <img src="https://www.civitatis.com/f/el-salvador/san-salvador/galeria/panoramica-diablo.jpg" alt="Vista panorámica de Panchimalco con montañas y elementos culturales">
+            <p class="ar-note">Usa AR para explorar en 360° las montañas y tradiciones.</p>
+        </div>
+    </section>
+
+    <section class="grid-section">
+        <div class="ruta" id="ruta-color">
+            <h2>Ruta del Color</h2>
+            <span class="icon">🖌️</span> <!-- Icono de pincel -->
+            <p>Cada mural es una voz. Camina por las calles que cuentan historias pintadas por manos locales, reflejo de la identidad salvadoreña.</p>
+            <img src="https://pulitzercenter.org/sites/default/files/styles/max_1200/public/ataco%20mural%20woman%20from%20community_0.JPG.webp?itok=yW8FE4wL" alt="Murales coloridos pintados por artistas locales en las calles de Panchimalco">
+            <p class="ar-note">Activa AR para ver murales interactivos en tu entorno.</p>
+        </div>
+
+        <div class="ruta" id="ruta-fe">
+            <h2>Ruta de la Fe</h2>
+            <span class="icon">🙏</span> <!-- Icono de palmas/rezo -->
+            <p>Entre rezos y flores, la fe viva se expresa en cada procesión, en cada palma tejida, en cada velo de comunidad. Panchimalco es fe viva.</p>
+            <img src="https://www.jansochor.com/photo-blog/fiesta-de-las-flores-y-palmas-el-salvador.jpg" alt="Procesión religiosa con flores y palmas tejidas en Panchimalco">
+            <p class="ar-note">Experiencia AR: Participa virtualmente en procesiones.</p>
+        </div>
+
+        <div class="ruta" id="ruta-gastronomica">
+            <h2>Ruta Gastronómica</h2>
+            <span class="icon">🍲</span> <!-- Icono de comida -->
+            <p>Sabores de antaño, cocinas que narran la historia. Degusta los tamales, el atol y las frutas locales que dan sabor a nuestra cultura.</p>
+            <img src="https://i0.wp.com/elsalvadorinenglish.com/wp-content/uploads/2025/04/comida-tipica-es-2.jpg?fit=1170%2C610&ssl=1" alt="Comidas tradicionales salvadoreñas como tamales, atol y frutas locales de Panchimalco">
+            <p class="ar-note">AR para recetas interactivas y visualización de platos.</p>
+        </div>
+
+        <div class="ruta" id="ruta-arte">
+            <h2>Ruta del Arte Vivo</h2>
+            <span class="icon">🎨</span> <!-- Icono de arte -->
+            <p>Pintores, escultores y músicos comparten su talento en talleres abiertos. Ven a vivir la inspiración desde sus propias manos.</p>
+            <img src="https://www.embracingelsalvador.org/wp-content/uploads/2018/05/c-3-1024x631.jpg" alt="Artesanos como pintores, escultores y músicos trabajando en talleres abiertos en Panchimalco">
+            <p class="ar-note">Explora talleres en AR para interactuar con artistas virtuales.</p>
+        </div>
+    </section>
+
+    <section id="mapas-3d">
+        <div class="feature">
+            <h2>Mapas Tridimensionales</h2>
+            <span class="icon">🗺️</span> <!-- Icono de mapa -->
+            <p>Explora mapas tridimensionales con marcadores de sitios culturales. Escanea los marcadores con tu celular para ver videos en RA de artistas locales, procesiones o bailes tradicionales.</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15506.008754459966!2d-89.19318322089844!3d13.617000000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f632e3123ba3639%3A0x6e2a2b76457a69d1!2sPanchimalco%2C%20El%20Salvador!5e1!3m2!1ses!2sus!4v1730456789012" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <p class="ar-note">Escanea marcadores en la app AR para videos interactivos. (Placeholder: Integra con AR.js o similar para marcadores reales).</p>
+        </div>
+    </section>
+
+    <section id="galeria-360">
+        <div class="feature">
+            <h2>Galería 360°</h2>
+            <span class="icon">📸</span> <!-- Icono de cámara -->
+            <p>Galería 360° que permite explorar murales, calles y talleres de Panchimalco.</p>
+            <iframe width="600" height="450" src="https://www.360cities.net/embed_iframe/puerta-del-diablo-panchimalco" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+            <p class="ar-note">Navega en 360° y usa AR para superponer elementos culturales.</p>
+        </div>
+    </section>
+
+    <section id="integracion">
+        <div class="feature">
+            <h2>Integración con Google Earth y Redes Sociales</h2>
+            <span class="icon">🌍</span> <!-- Icono de globo -->
+            <p>Integra con Google Earth para vistas inmersivas y comparte tus experiencias en redes sociales.</p>
+            <a href="https://earth.google.com/web/@13.617,-89.183,1000a,5000d,35y,0h,0t,0r" target="_blank">Explora en Google Earth</a>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Descubre%20Panchimalco%20360%C2%B0&url=https://example.com" target="_blank">🕊️</a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" target="_blank">📘</a>
+                <a href="https://www.instagram.com/" target="_blank">📸</a>
+            </div>
+            <p class="ar-note">Comparte tus capturas AR directamente desde la app.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Panchimalco 360°. Todos los derechos reservados. Diseñado para experiencias de Realidad Aumentada.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.ruta, .feature').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
